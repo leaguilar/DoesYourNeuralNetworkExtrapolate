@@ -72,6 +72,21 @@ def _r2_decimals(mean, sig=3):
 
 
 # %% render — returns tex string (or None when no data)
+def noise_slopes(runs, cond="exact_phi_mlp"):
+    """Mean log-log slope of OOD error against sigma, per d, over sigma > 0.
+
+    Each run stores one slope per (d, arm) in its `bayes_slopes` field. This
+    averages them over seeds, which is the quantity quoted for the canonical
+    arm in the Exp. 4.4 discussion.
+    """
+    per_d = defaultdict(list)
+    for run in runs:
+        for d_key, arms in run.get("bayes_slopes", {}).items():
+            if cond in arms:
+                per_d[int(d_key.split("=")[1])].append(float(arms[cond]))
+    return {d: float(np.mean(v)) for d, v in sorted(per_d.items()) if v}
+
+
 def render(runs=None):
     if runs is None:
         runs = _load_input()
@@ -97,16 +112,21 @@ def render(runs=None):
     n_seeds = len(runs)
     _, _, sigma_lo, sigma_hi, _ = boundary_interval(runs)
 
+    slopes = noise_slopes(runs)
+    slope_str = (rf" (log-log slopes {min(slopes.values()):.2f} to "
+                 rf"{max(slopes.values()):.2f} over $\sigma>0$)" if slopes else "")
+
     caption = (
         r"Exp.~4.4: Noise robustness (d) of the DGP commitment on the "
         r"$d$-torus, fixed $N{=}4{,}096$. Training labels carry Gaussian noise "
         r"$\eta \sim \mathcal{N}(0, \sigma^2)$; ID and OOD targets remain "
         r"clean. The canonical $\varphi(x){=}(\sin x_j, \cos x_j)_{j=1}^d$ "
-        r"tracks Bayes-only scaling across all $\sigma$ (\Cref{lem:canon}); "
-        r"raw and learned-Fourier baselines are bias-floored in the vacuous "
-        r"regime of \Cref{prop:erm} ($\sigma \lesssim \sqrt{n}\,\eps_W/\sqrt{2\pi}$, "
+        r"shows approximately linear error scaling with training-noise level"
+        + slope_str + r". Raw and learned-Fourier baselines are bias-floored "
+        r"below the plug-in crossover from \Cref{prop:erm} "
+        r"($\sigma \lesssim \sqrt{n}\,\eps_W/\sqrt{2\pi}$, "
         rf"bracketed by the stored cells to $[{sigma_lo:.2f}, {sigma_hi:.2f}]$) "
-        r"and rise with $\sigma$ in the informative regime, but "
+        r"and rise with $\sigma$ above this estimated crossover, but "
         r"the canonical commitment retains the OOD advantage throughout. "
         r"OOD RMSE, mean$\pm$std over " + f"{n_seeds}" +
         r" seeds; best OOD RMSE per row in \textbf{bold}. "
@@ -199,6 +219,11 @@ def build(runs=None, output_dir=None):
         return None
     out.write_text(tex)
     print(f"  Saved → {out}")
+    for cond in CONDITIONS:
+        s = noise_slopes(runs if runs is not None else _load_input(), cond)
+        if s:
+            print("    log-log slope of OOD error vs sigma (sigma>0), %-18s %s"
+                  % (cond, "  ".join(f"d={d}: {v:.2f}" for d, v in s.items())))
     return out
 
 

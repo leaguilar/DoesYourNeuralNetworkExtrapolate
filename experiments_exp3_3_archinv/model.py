@@ -114,7 +114,9 @@ class LearnableSinusoidalPE(nn.Module):
     def __init__(self, d_model: int):
         super().__init__()
         n = d_model // 2
-        # Vaswani init: ω_k = 10000^(-2k/d) for k = 0..n-1
+        # Init: ω_k = 10000^(-k/d) for k = 0..n-1, which is half the
+        # exponent of the fixed sinusoidal PE above (ω_k = 10000^(-2k/d)),
+        # so this arm starts from a different frequency set.
         log_freqs = torch.arange(0, n, dtype=torch.float32) * \
                     (-math.log(10000.0) / d_model)
         self.log_freqs = nn.Parameter(log_freqs)  # learnable

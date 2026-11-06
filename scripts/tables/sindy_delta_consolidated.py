@@ -106,12 +106,12 @@ def _toy_battery_sindy_rows(runs):
 
     TF_LABELS = {
         "raw":          r"Raw $x$",
-        "fourier":      r"Fourier-2 (deg.\ 1)",
-        "fourier2":     r"Fourier-2 (deg.\ 2)",
+        "fourier":      r"$(\sin x,\cos x)$ (deg.\ 2)",
+        "fourier2":     r"$(\sin 2x,\cos 2x)$ (deg.\ 2)",
         "poly2":        r"Poly-2",
         "poly3":        r"Poly-3",
         "fourier-4":    r"Fourier-4 (deg.\ 2)",
-        "fourier-6":    r"Fourier-6 (deg.\ 1)",
+        "fourier-6":    r"Fourier-6 (deg.\ 2)",
         "raw x->y":     r"Raw $x{\to}y$",
         "logx,raw y":   r"$\log x$, raw $y$",
         "loglog":       r"Log-log",
@@ -444,10 +444,13 @@ def render(toy_runs=None, kepler_runs=None, mak_runs=None,
         r"experiments \citep{brunton2016sindy}. $\delta_\mathrm{tr}$ and "
         r"$\delta_\mathrm{OOD}$: squared-NMSE "
         r"residual in the SINDy fit space. \colorbox{gray!12}{\strut Shaded rows} "
-        r"use the correct coordinate; bolded $\delta_\mathrm{OOD} \approx 0$ "
-        r"whenever a sparse polynomial coordinate exists. $G_2 = \tanh(\cdot)$ "
-        r"has none (diagnostic silent). "
-        rf"Mean over 3 seeds.{rho_str}"
+        r"use a preassigned canonical coordinate, and bolded "
+        r"$\delta_\mathrm{OOD} \approx 0$ marks the designated canonical rows. "
+        r"$G_2 = \tanh(\cdot)$ has no exact representation in the tested "
+        r"libraries (diagnostic silent). The noiseless toy diagnostic varies "
+        r"below the printed precision, so repeated seeds give the same displayed "
+        r"values. $k$ counts nonzero coefficients."
+        rf"{rho_str}"
     )
 
     # Split into two table environments at the natural boundary between the
@@ -485,12 +488,14 @@ def render(toy_runs=None, kepler_runs=None, mak_runs=None,
         out += table_footer()
         return out
 
-    cap_a = cap_common_head + r" Toy battery; real-data continuation below."
+    cap_a = cap_common_head + r" Toy battery, with additional experiments below."
     cap_b = (
-        r"Consolidated SINDy $\delta_\mathrm{OOD}$ (continued): real-data "
-        r"and multivariate experiments. \colorbox{gray!12}{\strut Shaded "
-        r"rows} use the correct coordinate; bold $\delta_\mathrm{OOD}\approx 0$ "
-        r"whenever a sparse polynomial coordinate exists. Mean over 3 seeds."
+        r"Consolidated SINDy $\delta_\mathrm{OOD}$ (continued): additional "
+        r"synthetic and real-data experiments. \colorbox{gray!12}{\strut Shaded "
+        r"rows} use a preassigned canonical coordinate, and bold "
+        r"$\delta_\mathrm{OOD}\approx 0$ marks the designated canonical rows. "
+        r"Residuals use each experiment's fitted target space, and seed counts "
+        r"vary by experiment."
     )
 
     header_row = (

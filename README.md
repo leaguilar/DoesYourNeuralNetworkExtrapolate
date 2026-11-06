@@ -180,9 +180,9 @@ python scripts/plot_results.py       # the Exp 4 result panels
 ```
 
 They read `results/` and write `tables/*.tex`, `tables/main/*.tex`,
-`figures/*.pdf` and `figures/main/*.pdf` next to this README. Every table of
-the paper except the compute-resources one then matches the paper's copy to the
-last digit. Captions and row labels differ.
+`figures/*.pdf` and `figures/main/*.pdf` next to this README. All 28 tables of
+the paper then carry the same numbers as the published copies. Captions differ,
+because they were edited after the tables were built.
 
 Most modules also run on their own, which is the quicker loop when iterating on
 one artefact. The two main-text tables built by the legacy row builders
@@ -209,10 +209,10 @@ Tables, in the order the paper prints them:
 | Exp 4.5 phi-misspecification sweep | `python scripts/tables/e3_misspec.py` |
 | Compute resources per experiment | `python scripts/resources_tables.py --output_dir tables/` |
 
-The compute-resources table is the one exception to the match above. It reads
-the wall time, device and peak GPU memory recorded in each run's JSON. The
-paper's version of that table groups the same records differently and is
-maintained by hand, so the two layouts do not line up row for row.
+The compute-resources table reads the wall time, device and peak GPU memory
+recorded in each run's JSON. The paper groups the same records into a different
+set of rows, so the two layouts do not line up row for row even though the
+recorded values agree.
 
 Figures:
 
