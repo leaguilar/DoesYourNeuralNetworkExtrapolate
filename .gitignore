@@ -1,0 +1,12 @@
+# Generated artefacts: every one is rebuilt by the commands in README.md
+/tables/
+/figures/*.pdf
+/figures/main/
+__pycache__/
+*.pyc
+
+# Lean build tree: `lake exe cache get` restores it
+/lean/.lake/
+
+# Data: downloaded or derived, never committed
+/data/

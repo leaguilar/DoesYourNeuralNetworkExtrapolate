@@ -1,0 +1,271 @@
+{
+  "experiment_id": "1.2",
+  "name": "powerlaw_vs_exponential_dgp_specificity",
+  "seed": 44,
+  "epochs": 2000,
+  "config": {
+    "x_lo": 1.0,
+    "x_hi": 2.0,
+    "x_ood": 10.0,
+    "b": 2.0,
+    "alpha": 1.3862943611198906
+  },
+  "indistinguishability": {
+    "train_max_abs_diff": 0.26264922175342287,
+    "ood_max_abs_diff": 262043.99999999994
+  },
+  "dgps": {
+    "P1_powerlaw": {
+      "raw_mlp": {
+        "id_error": 1.4408111005360855,
+        "ood_error": 85.17525732383044,
+        "ood_error_vs_p1": 85.17525732383044,
+        "ood_error_vs_p2": 99.97442853073811,
+        "sc_train": 0.06434582954211045
+      },
+      "log_log_ols": {
+        "id_error": 0.6436202111315575,
+        "ood_error": 3.6283927333194006,
+        "ood_error_vs_p1": 3.6283927333194006,
+        "ood_error_vs_p2": 99.83386667325888,
+        "sc_train": 0.05797719270469215
+      },
+      "log_y_ols": {
+        "id_error": 2.822724656561077,
+        "ood_error": 47552.61065397568,
+        "ood_error_vs_p1": 47552.61065397568,
+        "ood_error_vs_p2": 17.853320711614327,
+        "sc_train": 0.059471065703064256
+      },
+      "log_log_mlp": {
+        "id_error": 1.1424592712798025,
+        "ood_error": 85.76362877129421,
+        "ood_error_vs_p1": 85.76362877129421,
+        "ood_error_vs_p2": 99.97545225792905,
+        "sc_train": 0.057977192704689484
+      },
+      "log_y_mlp": {
+        "id_error": 1.0991049748887052,
+        "ood_error": 77.05417573306251,
+        "ood_error_vs_p1": 77.05417573306251,
+        "ood_error_vs_p2": 99.96043742017675,
+        "sc_train": 0.059471065703061536
+      },
+      "sindy_loglog": {
+        "id_error": 0.5230745560558804,
+        "ood_error": 2.2786582980565933,
+        "ood_error_vs_p1": 2.2786582980565933,
+        "ood_error_vs_p2": 99.82368448962568,
+        "xi": [
+          0.0,
+          2.0113572479458064
+        ],
+        "n_terms": 1,
+        "delta_train": 0.012376025612549624,
+        "delta_ood": 3.2246770225630863e-05
+      },
+      "sindy_logy": {
+        "id_error": 2.8227246565610775,
+        "ood_error": 47552.61065397575,
+        "ood_error_vs_p1": 47552.61065397575,
+        "ood_error_vs_p2": 17.85332071161421,
+        "xi": [
+          -1.2441658608412374,
+          1.3497971713653922
+        ],
+        "n_terms": 2,
+        "delta_train": 0.012589244981617165,
+        "delta_ood": 1.3765395662485134
+      },
+      "sindy_raw": {
+        "id_error": 3.057904322702607,
+        "ood_error": 61.383398726202266,
+        "ood_error_vs_p1": 61.383398726202266,
+        "ood_error_vs_p2": 99.93342951706411,
+        "xi": [
+          -2.177204375480209,
+          3.025418194999269
+        ],
+        "n_terms": 2,
+        "delta_train": 0.008306102725068047,
+        "delta_ood": 0.43880222248687617
+      },
+      "tabpfn_raw": {
+        "id_error": 1.2321894029626739,
+        "ood_error": 78.73173148698133,
+        "ood_error_vs_p1": 78.73173148698133,
+        "ood_error_vs_p2": 99.96333475294756
+      },
+      "tabpfn_loglog": {
+        "id_error": 1.0912591513771348,
+        "ood_error": 84.31529289820436,
+        "ood_error_vs_p1": 84.31529289820436,
+        "ood_error_vs_p2": 99.97295942574574
+      },
+      "tabpfn_logy": {
+        "id_error": 1.1745294377869544,
+        "ood_error": 82.31489482981578,
+        "ood_error_vs_p1": 82.31489482981578,
+        "ood_error_vs_p2": 99.96950699342179
+      },
+      "timesfm": {
+        "id_error": null,
+        "ood_error": 77.72430250994358,
+        "ood_error_vs_p1": 77.72430250994358,
+        "ood_error_vs_p2": 99.96121085653323,
+        "ood_x_range": [
+          2.0078740157480315,
+          10.0
+        ]
+      },
+      "timesfm_logy": {
+        "id_error": null,
+        "ood_error": 45530.01544681417,
+        "ood_error_vs_p1": 45530.01544681417,
+        "ood_error_vs_p2": 20.550484981575966,
+        "ood_x_range": [
+          2.0078740157480315,
+          10.0
+        ]
+      },
+      "timesfm_loglog": {
+        "id_error": null,
+        "ood_error": 28.31791028582589,
+        "ood_error_vs_p1": 28.31791028582589,
+        "ood_error_vs_p2": 99.77657761217235,
+        "ood_x_range": [
+          2.0078740157480315,
+          10.0
+        ]
+      }
+    },
+    "P2_exponential": {
+      "raw_mlp": {
+        "id_error": 1.606212464629387,
+        "ood_error": 99.98008520477583,
+        "ood_error_vs_p1": 88.44924553352229,
+        "ood_error_vs_p2": 99.98008520477583,
+        "sc_train": 0.0938091222205303
+      },
+      "log_log_ols": {
+        "id_error": 3.360473929270686,
+        "ood_error": 99.84289859959105,
+        "ood_error_vs_p1": 8.867686223791015,
+        "ood_error_vs_p2": 99.84289859959105,
+        "sc_train": 0.07966755589796426
+      },
+      "log_y_ols": {
+        "id_error": 0.6508943697702546,
+        "ood_error": 10.555736672534936,
+        "ood_error_vs_p1": 51785.35975041191,
+        "ood_error_vs_p2": 10.555736672534936,
+        "sc_train": 0.06602040631362285
+      },
+      "log_log_mlp": {
+        "id_error": 1.4010893209049342,
+        "ood_error": 99.97985134635074,
+        "ood_error_vs_p1": 88.3143385498075,
+        "ood_error_vs_p2": 99.97985134635074,
+        "sc_train": 0.07966755589796101
+      },
+      "log_y_mlp": {
+        "id_error": 1.2430292564173668,
+        "ood_error": 99.96106237965768,
+        "ood_error_vs_p1": 77.5506117901534,
+        "ood_error_vs_p2": 99.96106237965768,
+        "sc_train": 0.06602040631362013
+      },
+      "sindy_loglog": {
+        "id_error": 3.3604739292706833,
+        "ood_error": 99.84289859959105,
+        "ood_error_vs_p1": 8.867686223791054,
+        "ood_error_vs_p2": 99.84289859959105,
+        "xi": [
+          -0.06533800390238367,
+          1.9861199956191247
+        ],
+        "n_terms": 2,
+        "delta_train": 0.020455944453788677,
+        "delta_ood": 0.3193750807263794
+      },
+      "sindy_logy": {
+        "id_error": 0.6508943697702152,
+        "ood_error": 10.555736672534671,
+        "ood_error_vs_p1": 51785.359750412055,
+        "ood_error_vs_p2": 10.555736672534671,
+        "xi": [
+          -1.355014820235624,
+          1.3709160891281105
+        ],
+        "n_terms": 2,
+        "delta_train": 0.01695181619601484,
+        "delta_ood": 8.549028772858188e-05
+      },
+      "sindy_raw": {
+        "id_error": 6.2242658905174935,
+        "ood_error": 99.93581889351361,
+        "ood_error_vs_p1": 62.76944241365977,
+        "ood_error_vs_p2": 99.93581889351361,
+        "xi": [
+          -2.210279024869203,
+          2.9353652163593913
+        ],
+        "n_terms": 2,
+        "delta_train": 0.01342458485669152,
+        "delta_ood": 0.9996245906496048
+      },
+      "tabpfn_raw": {
+        "id_error": 1.3251806323031579,
+        "ood_error": 99.95474211346028,
+        "ood_error_vs_p1": 73.74717275124677,
+        "ood_error_vs_p2": 99.95474211346028
+      },
+      "tabpfn_loglog": {
+        "id_error": 1.0879060439028456,
+        "ood_error": 99.96844780915389,
+        "ood_error_vs_p1": 81.69787348989449,
+        "ood_error_vs_p2": 99.96844780915389
+      },
+      "tabpfn_logy": {
+        "id_error": 1.2172241041983307,
+        "ood_error": 99.95948955184393,
+        "ood_error_vs_p1": 76.504566988105,
+        "ood_error_vs_p2": 99.95948955184393
+      },
+      "timesfm": {
+        "id_error": null,
+        "ood_error": 99.95905353371192,
+        "ood_error_vs_p1": 77.14572326489777,
+        "ood_error_vs_p2": 99.95905353371192,
+        "ood_x_range": [
+          2.0078740157480315,
+          10.0
+        ]
+      },
+      "timesfm_logy": {
+        "id_error": null,
+        "ood_error": 29.645429213086654,
+        "ood_error_vs_p1": 74358.8907613835,
+        "ood_error_vs_p2": 29.645429213086654,
+        "ood_x_range": [
+          2.0078740157480315,
+          10.0
+        ]
+      },
+      "timesfm_loglog": {
+        "id_error": null,
+        "ood_error": 99.73462912119608,
+        "ood_error_vs_p1": 52.41308185553822,
+        "ood_error_vs_p2": 99.73462912119608,
+        "ood_x_range": [
+          2.0078740157480315,
+          10.0
+        ]
+      }
+    }
+  },
+  "wall_time_s": 36.03324484825134,
+  "device": "cuda",
+  "gpu_name": "NVIDIA RTX 3000 Ada Generation Laptop GPU",
+  "gpu_mem_peak_gb": 0.027597312
+}

@@ -1,0 +1,55 @@
+# Conda environment for NeurIPS 2026 feature engineering experiments.
+#
+# Create:   conda env create -f environment.yml
+# Activate: conda activate feateng
+# Update:   conda env update -f environment.yml --prune
+
+name: feateng
+
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+
+dependencies:
+  # Core
+  - python=3.11
+  - numpy>=1.24
+  - scipy>=1.11
+
+  # PyTorch, CPU-only (Tier 1/2 experiments are small; add cudatoolkit if needed)
+  - pytorch>=2.2
+  - torchvision        # ResNet-18 / DenseNet-121 backbones for Exp 2.4
+  - cpuonly            # remove this line and add cudatoolkit for GPU nodes
+                       # (Exp 2.4 trains 20 CNN runs and wants a GPU)
+
+  # Visualization (used locally, harmless on cluster)
+  - matplotlib>=3.8
+  - seaborn>=0.13
+
+  # Scientific computing
+  - scikit-learn       # KFold, used by exp3_1_selection_protocol
+  - pandas             # exp2_2_kepler dataset loader; Camelyon17 metadata.csv
+  - pillow             # Camelyon17 patch decoding (Exp 2.4 data prep)
+
+  # Utilities
+  - tqdm
+  - pip
+
+  - pip:
+    # Anything not on conda channels goes here
+    - pywavelets        # Tier 2/3 wavelet experiments
+    - pysindy           # SINDy diagnostic in exp1_3, exp2_1, exp2_2
+    - datasets          # Hugging Face datasets, exp2_2 NASA exoplanet loader
+    - torchstain        # Macenko H&E stain normalisation = phi in Exp 2.4;
+                        # needed only for the data-prep step, not for training
+
+    # Optional baselines (commented out: each requires non-trivial setup, and
+    # the import sites are wrapped to fail with a clear error if missing).
+    # Uncomment / install separately to enable:
+    #   - tabpfn-client  # TabPFN cloud baseline (Exp 2.2); requires account at priorlabs.ai
+    #   - timesfm        # TimesFM forecaster (Exp 2.2); recommended in its own env
+    #   - mamba-ssm      # Mamba block (Exp 3.3 --model_type mamba); needs CUDA toolchain
+    #   - timm           # frozen vision backbones for expfm_v_histopath_stain.py
+    #   - wilds          # official Camelyon17 splits for expfm_v_histopath_stain.py
+    #                    # (that arm is unreported; the reported Exp 2.4 path needs neither)

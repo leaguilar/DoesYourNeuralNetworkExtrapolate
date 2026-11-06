@@ -1,0 +1,86 @@
+{
+  "experiment_id": "1.1",
+  "name": "sin_observational_equivalence",
+  "seed": 11,
+  "epochs": 800,
+  "n_train": 128,
+  "n_ood": 128,
+  "indistinguishability": {
+    "train_max_abs_diff": 0.006925270707505013,
+    "train_max_rel_diff_pct": 1.0964403941292662,
+    "ood_max_abs_diff": 839.2872906055308
+  },
+  "conditions": {
+    "raw_mlp": {
+      "id_error": 0.13472190663828568,
+      "ood_error": 194.04457368483813,
+      "ood_error_vs_p2": 100.81454694271316,
+      "sc_train": 0.406416153670412,
+      "sc_ood": 0.407890490757799
+    },
+    "raw_mlp_p2ctx": {
+      "id_error": 0.272928548466032,
+      "ood_error": 100.8343506508806,
+      "ood_error_vs_p1": 197.10228978263206,
+      "sc_train": NaN,
+      "sc_ood": NaN
+    },
+    "fourier_mlp": {
+      "id_error": 0.16544242458357733,
+      "ood_error": 0.16568830917957605,
+      "ood_error_vs_p2": 99.7700209289828,
+      "sc_train": 1.7558289806443682e-32,
+      "sc_ood": 1.7770493839912238e-32
+    },
+    "fourier_ols": {
+      "id_error": 1.364324392739589e-14,
+      "ood_error": 1.3592478150563665e-14,
+      "ood_error_vs_p2": 99.77002394975565,
+      "sc_train": 1.7558289806443682e-32,
+      "sc_ood": 1.7770493839912238e-32
+    },
+    "taylor9_direct": {
+      "id_error": 0.09365134765123005,
+      "ood_error": 18197.647339851297,
+      "ood_error_vs_p2": 0.0,
+      "sc_train": NaN,
+      "sc_ood": NaN
+    },
+    "sindy_fourier": {
+      "id_error": 1.3347533180004227e-13,
+      "ood_error": 1.3331965285158428e-13,
+      "ood_error_vs_p2": 99.77002394975565,
+      "n_terms": 15,
+      "delta_train": 2.154617700785246e-30,
+      "delta_ood": 2.1455294151010803e-30
+    },
+    "sindy_raw": {
+      "id_error": 0.0005246155197101273,
+      "ood_error": 10438.261279192942,
+      "ood_error_vs_p2": 42.54144058567135,
+      "n_terms": 5,
+      "delta_train": 3.091257806152658e-11,
+      "delta_ood": 36891.17852339656
+    },
+    "sindy_p2ctx": {
+      "id_error": 2.0118243047396164e-11,
+      "ood_error": 2.6226151898968705e-09,
+      "ood_error_vs_p1": 18197.647339372947,
+      "n_terms": 5,
+      "delta_train": 8.026923804474377e-26,
+      "delta_ood": 6.2024926717157485e-22
+    },
+    "sindy_fourier_p2ctx": {
+      "id_error": 0.06940654701722061,
+      "ood_error": 99.77003138288487,
+      "ood_error_vs_p1": 0.08756619888287362,
+      "n_terms": 25,
+      "delta_train": 2.731055229356968e-06,
+      "delta_ood": 0.9979469080992878
+    }
+  },
+  "wall_time_s": 2.6085758209228516,
+  "device": "cuda",
+  "gpu_name": "NVIDIA RTX 3000 Ada Generation Laptop GPU",
+  "gpu_mem_peak_gb": 0.02444032
+}
