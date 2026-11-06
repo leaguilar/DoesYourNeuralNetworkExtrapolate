@@ -7,6 +7,8 @@ Every table and figure of the paper is built by one module in here from the
 per-seed JSON next to it. Every proposition, lemma and corollary of the paper is
 stated and proved in Lean 4 under `lean/`.
 
+This release is archived at https://doi.org/10.5281/zenodo.24019953
+
 ```bibtex
 @inproceedings{aguilar2026extrapolate,
   title     = {Does Your Neural Network Extrapolate? Feature Engineering as
@@ -15,6 +17,18 @@ stated and proved in Lean 4 under `lean/`.
                Antulov-Fantulin, Nino},
   booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
   year      = {2026},
+}
+
+@software{aguilar2026extrapolate_code,
+  title     = {Code, results and proofs for "Does Your Neural Network
+               Extrapolate? Feature Engineering as Identifiability Bias for
+               OOD Generalization"},
+  author    = {Aguilar, Leonel and Nagler, Jan and Hoelscher, Christoph and
+               Antulov-Fantulin, Nino},
+  year      = {2026},
+  version   = {v1.0.0},
+  doi       = {10.5281/zenodo.24019953},
+  url       = {https://github.com/leaguilar/DoesYourNeuralNetworkExtrapolate},
 }
 ```
 
